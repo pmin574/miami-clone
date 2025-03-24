@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hotline Miami Clone</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div id="gameContainer">
+      <canvas id="gameCanvas"></canvas>
+      <div id="hud">
+        <div id="score">Score: <span id="scoreValue">0</span></div>
+        <div id="health">Health: <span id="healthValue">100</span></div>
+      </div>
+      <div id="startMenu">
+        <h1>Hotline Miami Clone</h1>
+        <div class="instructions">
+          <h2>Controls:</h2>
+          <p>WASD - Move</p>
+          <p>Mouse - Aim</p>
+          <p>Left Click - Shoot</p>
+          <p>R - Reload</p>
+          <p>Space - Dash</p>
+        </div>
+        <button id="startButton">Start Game</button>
+      </div>
+      <div id="gameOver" class="hidden">
+        <h2>Game Over</h2>
+        <p>Final Score: <span id="finalScore">0</span></p>
+        <p>Enemies Killed: <span id="enemiesKilled">0</span></p>
+        <button id="restartButton">Restart</button>
+      </div>
+    </div>
+    <script src="game.js"></script>
+  </body>
+</html>
