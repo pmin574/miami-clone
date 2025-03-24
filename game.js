@@ -6,6 +6,8 @@ let gameOver = false;
 let score = 0;
 let health = 100;
 let enemiesKilled = 0;
+let showEasterEgg = false;
+let easterEggStartTime = 0;
 
 // Sound Manager
 class SoundManager {
@@ -523,6 +525,12 @@ function checkCollisions() {
           enemiesKilled++;
           document.getElementById("scoreValue").textContent = score;
           soundManager.generateEnemyDeathSound();
+
+          // Check for easter egg milestone
+          if (score === 1000) {
+            showEasterEgg = true;
+            easterEggStartTime = Date.now();
+          }
         }
         break;
       }
@@ -640,6 +648,26 @@ function draw() {
     ctx.strokeStyle = "#fff";
     ctx.lineWidth = 2;
     ctx.stroke();
+  }
+
+  // Draw easter egg popup
+  if (showEasterEgg) {
+    const elapsed = Date.now() - easterEggStartTime;
+    if (elapsed < 1000) {
+      // Show for 1 second
+      // Semi-transparent black background
+      ctx.fillStyle = "rgba(0, 0, 0, 0.7)";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      // Easter egg text
+      ctx.fillStyle = "#ff0";
+      ctx.font = "bold 48px Arial";
+      ctx.textAlign = "center";
+      ctx.textBaseline = "middle";
+      ctx.fillText("EASTER EGG", canvas.width / 2, canvas.height / 2);
+    } else {
+      showEasterEgg = false;
+    }
   }
 }
 
